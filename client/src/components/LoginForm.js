@@ -18,8 +18,8 @@ const initialValues = {
   password: '',
 };
 
-const LoginForm = (props) => {
-  const { setIsAuth } = useContext(AuthContext);
+const LoginForm = () => {
+  const { setIsAuth, setCurrentUser } = useContext(AuthContext);
   const [loginError, setLoginError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -31,8 +31,9 @@ const LoginForm = (props) => {
       try {
         setLoginError(false);
         setLoading(true);
-        await Api.auth.signIn(email, password);
+        const userData = await Api.auth.signIn(email, password);
         setIsAuth(true);
+        setCurrentUser(userData);
       } catch (err) {
         setLoginError(true);
         setLoading(false);
@@ -88,7 +89,6 @@ const LoginForm = (props) => {
         >
           SIGN IN
         </SubmitButton>
-       
       </form>
     </Container>
   );

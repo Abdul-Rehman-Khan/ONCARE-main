@@ -109,7 +109,9 @@ const SignupForm = (props) => {
       </form>
       <footer>
         <p>
-          <Link to="/">← Go back to login </Link>
+          <Link to="/">
+            <img src="/icons/arrow-left.svg" alt="Back" /> Login
+          </Link>
         </p>
       </footer>
     </Container>

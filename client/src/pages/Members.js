@@ -1,39 +1,42 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../AuthContext';
-import Axios from 'axios';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { Button, Col, Row } from 'react-bootstrap';
+import Api from '../api';
+// import Loader from '../shared/Loader'
+import MemberRow from '../components/MembersRow';
 
 const Members = () => {
-  const { logout } = useContext(AuthContext);
   const [members, setMembers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const getMembers = async () => {
-    const getMembersData = await Axios.get('/api/users'); // TODO // shift it to api folder
-    setMembers(getMembersData.data);
-  };
+  useEffect(() => {
+    setLoading(true);
+    Api.members.getAll().then((response) => {
+      setMembers(response?.users);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <Container className="signup">
-      <Row>
-        <Col md={{ span: 8, offset: 2 }}>
-          <h1>Members Page</h1>
-          <Button
-            className="m-1"
-            onClick={() => {
-              logout();
-              setMembers([]);
-            }}
-          >
-            Logout
-          </Button>
-          <Button className="m-1" onClick={getMembers}>
-            Show Secret
-          </Button>
-        </Col>
-      </Row>
-      <Row>{/* loop through members, use table may be ? */}</Row>
+      {loading
+        ? 'Loading'
+        : members.map((member) => {
+            return <MemberRow member={member} />;
+          })}
     </Container>
   );
 };
+
+const Container = styled.div`
+  margin-top: 4rem;
+
+  /* Spinner */
+  > img {
+    height: 6rem;
+    display: block;
+    margin: 10rem auto;
+  }
+`;
 
 export default Members;

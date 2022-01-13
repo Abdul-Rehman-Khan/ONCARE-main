@@ -6,7 +6,7 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = (props) => {
   const [isAuth, setIsAuth] = useState(false);
-
+  const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
     checkAuth();
   }, []);
@@ -31,7 +31,16 @@ export const AuthProvider = (props) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuth, setIsAuth, checkAuth, logout }}>
+    <AuthContext.Provider
+      value={{
+        isAuth,
+        setCurrentUser,
+        currentUser,
+        setIsAuth,
+        checkAuth,
+        logout,
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );

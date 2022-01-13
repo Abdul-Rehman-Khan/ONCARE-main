@@ -1,5 +1,6 @@
-import authApi from './auth';
 import Axios from 'axios';
+import authApi from './auth';
+import membersApi from './members';
 
 export const API_URL = 'http://localhost:3000/api/';
 
@@ -9,8 +10,7 @@ export const axios = Axios.create({
 
 const Api = {
   auth: authApi,
-  // TODO
-  // members: membersApi,
+  members: membersApi,
 };
 
 export default Api;

@@ -1,5 +1,6 @@
 import React from 'react';
 import SignUpLink from './SignUpLink';
+import SignOutLink from './SignOutLink';
 import styled from 'styled-components';
 
 const RightSection = ({ sectionName }) => {
@@ -7,11 +8,8 @@ const RightSection = ({ sectionName }) => {
     switch (sectionName) {
       case 'signUp':
         return !window.location.pathname.includes('signup') && <SignUpLink />;
-
       case 'signOut':
-        // Todo
-        // return <SignOutLink />;
-        return null;
+        return <SignOutLink />;
       default:
         return null;
     }

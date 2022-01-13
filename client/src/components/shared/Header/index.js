@@ -5,7 +5,10 @@ import RightSection from './RightSection.js';
 
 const Header = ({ backgroundColor, rightSection }) => (
   <Container background={backgroundColor}>
-    <h1>ON CARE.</h1>
+    <figure>
+      <img src="/icons/Logo.svg" alt="ON CARE." />
+    </figure>
+
     <RightSection sectionName={rightSection} />
   </Container>
 );
@@ -29,9 +32,14 @@ const Container = styled.div`
     padding: 0 2rem;
   }
 
-  /* Logo Text */
-  > div:first-child {
+  /* Logo section */
+  > figure {
     text-align: left;
+    margin-bottom: 0;
+    /* Logo image */
+    > img {
+      height: 3rem;
+    }
   }
 `;
 
