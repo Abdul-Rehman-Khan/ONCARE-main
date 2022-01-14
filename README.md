@@ -88,8 +88,7 @@ Till now I have implemented the following features
 There is one issue that needs be addressed before getting started with the project, I haven't looked at it due to time constraints.
 
 - [ ] Docker image, may need to install MySQL Database manually.
-  I have tried downloading MySQL images and run migrations over it, but I think I'll be needing a bit more time to actually implement that because I am not an expert when it comes to containerization. 
-
+  I have tried downloading MySQL images and run migrations over it, but I think I'll be needing a bit more time to actually implement that.
 ## Queries ?
 Reach out to me I will be more than happy to help you out.
 `email : yz.abdulrehman.khan@gmail.com`
