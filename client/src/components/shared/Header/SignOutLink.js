@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { AuthContext } from '../../../AuthContext';
-// constants
+/* Constants */
 import { COLOR } from '../../../styles/constants';
 
 const SignOutLink = () => {
@@ -13,6 +13,7 @@ const SignOutLink = () => {
 const LinkButton = styled.div`
   background-color: unset;
   letter-spacing: 1px;
+  display: inline;
   text-transform: uppercase;
 
   &:hover {

@@ -7,7 +7,8 @@ import Members from './pages/Members';
 import AppNavigation from './pages/NavBar';
 import GlobalStyle from './styles/globalStyles';
 import CoverWrapperLayout from './components/shared/CoverWrapperLayout';
-
+import PageLoader from './components/shared/FullPageLoader';
+import PageNotFound from './components/shared/404';
 /* Even though this is the App.js file, in the end we are not exactly exporting
    the App component.  We actually set up the app component to implement our react
    router, but in the end we export App wrapped in the context provider */
@@ -43,13 +44,14 @@ function App() {
         <Switch>
           <PrivateRoute exact path="/" component={Members} />
           <PrivateRoute path="/members" component={Members} />
-          {/* Todo */}
-          {/* <Route
-          path="*"
-          children={
-            //   <NotFoundScreen />
-          }
-        /> */}
+          <Route
+            path="*"
+            children={
+              <CoverWrapperLayout subHead="signOut">
+                <PageNotFound />
+              </CoverWrapperLayout>
+            }
+          />
         </Switch>
       </Router>
     );
@@ -67,8 +69,7 @@ function App() {
               path="/signup"
               render={(props) => <Signup {...props} />}
             />
-            {/* Todo */}
-            {/* <Route path="*" children={<NotFoundScreen />} /> */}
+            <Route path="*" children={<PageNotFound />} />
           </Switch>
         </CoverWrapperLayout>
       </Router>
@@ -76,7 +77,7 @@ function App() {
   };
 
   return (
-    <Suspense fallback={'Loading'}>
+    <Suspense fallback={<PageLoader />}>
       {isAuth ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
     </Suspense>
   );

@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+/* Shared Components and utils */
 import Header from './Header';
+/* Constants */
 import { BP, HEADER_HEIGHT } from '../../styles/constants';
 
-const CoverWrapperLayout = ({ children }) => (
+const CoverWrapperLayout = ({ subHead = 'signUp', children }) => (
   <>
     <Header
       backgroundColor="transparent"
       logoColor="light"
-      rightSection="signUp"
+      rightSection={subHead}
     />
     <Container>
       <ContentWrapper>{children}</ContentWrapper>

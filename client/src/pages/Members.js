@@ -1,29 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Button, Col, Row } from 'react-bootstrap';
-import Api from '../api';
-// import Loader from '../shared/Loader'
 import MemberRow from '../components/MembersRow';
+/* Shared Components and utils */
+import Loader from '../components/shared/Loader';
+/* Apis */
+import Api from '../api';
 
 const Members = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  const fetchAllMembers = async () => {
     setLoading(true);
-    Api.members.getAll().then((response) => {
-      setMembers(response?.users);
+    try {
+      const { users } = await Api.members.getAllMembers();
+      setMembers(users);
+    } finally {
       setLoading(false);
-    });
+    }
+  };
+
+  useEffect(() => {
+    fetchAllMembers();
   }, []);
 
   return (
     <Container className="signup">
-      {loading
-        ? 'Loading'
-        : members.map((member) => {
-            return <MemberRow member={member} />;
-          })}
+      {loading ? (
+        <Loader />
+      ) : (
+        members.map((member) => {
+          return (
+            <MemberRow fetchAllMembers={fetchAllMembers} member={member} />
+          );
+        })
+      )}
     </Container>
   );
 };

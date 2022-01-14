@@ -1,25 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-// constants
-import { COLOR, CARD_SHADOW, BP } from '../styles/constants';
-// shared components/utils
+import { Modal } from 'react-bootstrap';
+import EditMemberForm from './EditMemberForm';
+/* Shared Components and utils */
 import Button from './shared/Button';
 import { formatDate } from './shared/helperfunctions';
+/* Apis */
+import Api from '../api';
+/* Constants */
+import { COLOR, CARD_SHADOW, BP } from '../styles/constants';
 
-const MemberRow = ({ member }) => (
-  <Container>
-    <Title>{member.id}</Title>
-    <Description>{member.firstName + ' ' + member.lastName}</Description>
-    <Description>{member.email}</Description>
-    <CreatedAt>{formatDate(member.createdAt)}</CreatedAt>
-    <Button size="small" color="grey">
-      Edit
-    </Button>
-    <Button size="small" color="red">
-      Delete
-    </Button>
-  </Container>
-);
+const MemberRow = ({ member, fetchAllMembers }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const deleteUser = async (memberId) => {
+    try {
+      await Api.members.deleteMember(memberId);
+      fetchAllMembers();
+    } catch (e) {
+      throw new Error(e);
+    }
+  };
+
+  return (
+    <>
+      <Container>
+        <Title>{member.id}</Title>
+        <Description>{member.firstName + ' ' + member.lastName}</Description>
+        <Description>{member.email}</Description>
+        <CreatedAt>{formatDate(member.createdAt)}</CreatedAt>
+        <Button size="small" color="grey" onClick={handleShow}>
+          Edit
+        </Button>
+        <Button size="small" color="red" onClick={() => deleteUser(member.id)}>
+          Delete
+        </Button>
+      </Container>
+      {/* Edit Member Modal */}
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={show}
+        onHide={handleClose}
+      >
+        <EditMemberForm
+          id={member.id}
+          ModalClose={handleClose}
+          fetchAllMembers={fetchAllMembers}
+          initialValues={{
+            firstName: member.firstName,
+            lastName: member.lastName,
+            email: member.email,
+          }}
+        />
+      </Modal>
+      {/* Ends */}
+    </>
+  );
+};
 
 const Container = styled.div`
   display: flex;

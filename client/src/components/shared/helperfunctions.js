@@ -7,7 +7,7 @@ export const validate = (values) => {
   if (!/.+@.+\..+/.test(values.email)) {
     errors.email = 'Please provide a valid email';
   }
-  if (!values.password) {
+  if (values.hasOwnProperty('password') && !values.password) {
     errors.password = 'Password is required';
   }
 
