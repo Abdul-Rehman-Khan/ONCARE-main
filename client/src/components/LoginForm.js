@@ -2,16 +2,15 @@ import React, { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
 import { AuthContext } from '../AuthContext';
-import { COLOR, BP } from '../styles/constants';
-import { validate } from './shared/helperfunctions';
-
-// Auth APi
+/* Auth APi */
 import Api from '../api';
-
-// Shared Components
+/* Shared Components and utils */
 import Input from './shared/Input';
 import Button from './shared/Button';
 import SignUpLink from './shared/Header/SignUpLink';
+import { validate } from './shared/helperfunctions';
+/* Constants */
+import { COLOR, BP } from '../styles/constants';
 
 const initialValues = {
   email: '',

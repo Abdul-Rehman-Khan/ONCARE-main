@@ -1,7 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { COLOR } from '../../styles/constants';
+/* Shared Components and utils */
 import Loader from './Loader';
+/* Constants */
+import { COLOR } from '../../styles/constants';
 
 const Button = ({
   children,

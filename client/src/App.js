@@ -21,7 +21,7 @@ function App() {
   const { isAuth } = useContext(AuthContext);
   console.log('App auth: ', isAuth);
 
-  /* here we are ceating a private route wrapper to prevent front end routing to
+  /* here we are creating a private route wrapper to prevent front end routing to
      restricted pages.  The ({ component: Component, ...rest })  argument that is
      passed to this functional component is essentially the same as just passing
      props, but using object destucturing.  the ...rest is literally the rest of

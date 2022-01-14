@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+/* Shared Components and utils */
 import Header from '../components/shared/Header';
+/* Constants */
 import { BP, HEADER_HEIGHT, COLOR } from '../styles/constants';
 
 function AppNavigation(props) {

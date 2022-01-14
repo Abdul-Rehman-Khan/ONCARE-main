@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLOR, BP } from '../../../styles/constants';
 import { Link } from 'react-router-dom';
+/* Constants */
+import { COLOR, BP } from '../../../styles/constants';
 
 const SignUpLink = ({ className }) => {
   return (

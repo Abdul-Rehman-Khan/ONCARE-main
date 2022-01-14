@@ -4,11 +4,9 @@ import { useFormik } from 'formik';
 import styled from 'styled-components';
 import { COLOR, BP } from '../styles/constants';
 import { validate } from './shared/helperfunctions';
-
-// Apis
+/* Apis */
 import Api from '../api';
-
-// Shared Components
+/* Shared Components and utils */
 import Input from './shared/Input';
 import Button from './shared/Button';
 

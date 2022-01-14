@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+/* Constants */
 import { COLOR } from '../../styles/constants';
 
 const Input = ({

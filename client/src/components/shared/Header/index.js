@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HEADER_HEIGHT, BP } from '../../../styles/constants';
 import RightSection from './RightSection.js';
+/* Constants */
+import { HEADER_HEIGHT, BP } from '../../../styles/constants';
 
 const Header = ({ backgroundColor, rightSection }) => (
   <Container background={backgroundColor}>

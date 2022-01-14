@@ -1,7 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import SignUpLink from './SignUpLink';
 import SignOutLink from './SignOutLink';
-import styled from 'styled-components';
 
 const RightSection = ({ sectionName }) => {
   const renderSection = (sectionName) => {
