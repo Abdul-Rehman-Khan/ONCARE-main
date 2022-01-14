@@ -2,7 +2,7 @@ Created by [Abdul Rehman Khan](https://github.com/Abdul-Rehman-Khan "Abdul Rehma
 
 
 ## ON CARE. User Management System
-A web app that allows users to get registered and sign up for managing users. 
+A web app that allows users to get registered for managing users. 
 
 
 ## System/Tools Requirements
